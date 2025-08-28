@@ -1,3 +1,4 @@
+
 # Guilda de Teste
 
 ## O que é uma Guilda
@@ -28,10 +29,10 @@ O teste de UI verifica:
    <input id="ui-4" type="text" class="p-inputtext p-component" />
    ```
 
-   Solução,  utilizar `data-testid` com um valor:
+   Solução, utilizar `data-testid` com um valor:
    ```html
    <label id="ui-4-label" for="email-input">Email</label>
-   <input id="ui-4-input" type="text" class="p-inputtext p-component" data-testid="email-input" />
+   <input id="email-input" type="text" class="p-inputtext p-component" data-testid="email-input" />
    ```
 
 2. **Elementos sem identificadores claros**
@@ -42,7 +43,7 @@ O teste de UI verifica:
    <button class="p-button p-component">Salvar</button>
    ```
 
-   Solução,  utilizar `data-testid` com um valor:
+   Solução, utilizar `data-testid` com um valor:
    ```html
    <button class="p-button p-component" data-testid="save-button">Salvar</button>
    ```
@@ -51,13 +52,13 @@ O teste de UI verifica:
    Selecionar elementos apenas pelo texto não é confiável:
    - Se o sistema for traduzido para outro idioma, o teste quebra;
    - Nem sempre o texto é único na tela.
-  
+
    Problema:
    ```html
    <button class="p-button p-component">Novo</button>
    ```
 
-   Solução,  utilizar `data-testid` com um valor:
+   Solução, utilizar `data-testid` com um valor:
    ```html
    <button class="p-button p-component" data-testid="create-button">Criar</button>
    ```
@@ -70,8 +71,7 @@ use: {
 }
 ```
 Exemplo de uso:
-Sempre que usar o método `getByTestId("save-button")` o playwright vai buscar,
-"Qual elemento dessa tela, tem o atributo `data-testid` com o valor `save-button`
+Sempre que usar o método `getByTestId("save-button")` o Playwright vai buscar o elemento que possui `data-testid="save-button"`.
 ```ts
 await page.getByTestId('save-button').click();
 ```
@@ -125,6 +125,11 @@ Benefícios:
 - Nenhuma demanda passa sem QA olhar;
 - Evita que o QA fique “no escuro”;
 - Garante que todos os cards sejam testados corretamente;
-enter image description here
+
+## Conclusão
+- Adotar `data-testid` como padrão torna os testes mais confiáveis, rápidos e legíveis.
+- Com a esteira atualizada, temos melhor visibilidade e controle de qualidade antes das entregas.
+- Qualidade é responsabilidade de toda a equipe.
+
 ## Perguntas
 - Alguém tem alguma dúvida ou queira dar uma sugestão?

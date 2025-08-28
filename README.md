@@ -117,9 +117,9 @@ Benefícios:
 ## Proposta de melhoria na esteira (Jira)
 - Criar colunas **Ready for Test** e **Testing** (ou substituir as colunas de *Reviews*).
 - Fluxo proposto:
-  1. Depois que o card está na arquitetura, o dev move para **Ready for Test**, indicando quem vai testar;
-  2. Quando QA inicia o teste, move para **Testing**;
-  3. Depois de testado, move para **Deploy**.
+  - Depois que o card está na arquitetura, o dev move para **Ready for Test**, indicando quem vai testar;
+  - Quando QA inicia o teste, move para **Testing**;
+  - Depois de testado, move para **Deploy**.
 
 Benefícios:
 - Nenhuma demanda passa sem QA olhar;

@@ -20,8 +20,7 @@ O teste de UI verifica:
 
 ## Problemas que temos hoje
 1. **IDs e Classes que mudam constantemente**
-   No Angular/PrimeNG, muitos IDs são gerados automaticamente (`id="ui-4-label"`).
-   Esses valores mudam quando novos elementos são adicionados na tela, fazendo com que o teste quebre facilmente.
+   No Angular/PrimeNG, muitos IDs são gerados automaticamente (`id="ui-4-label"`). Esses valores mudam quando novos elementos são adicionados na tela, fazendo com que o teste quebre facilmente.
 
    Problema:
    ```html
@@ -29,7 +28,7 @@ O teste de UI verifica:
    <input id="ui-4" type="text" class="p-inputtext p-component" />
    ```
 
-   Solução, utilizar `data-testid` com um valor:
+   Solução:
    ```html
    <label id="ui-4-label" for="email-input">Email</label>
    <input id="email-input" type="text" class="p-inputtext p-component" data-testid="email-input" />
@@ -43,7 +42,7 @@ O teste de UI verifica:
    <button class="p-button p-component">Salvar</button>
    ```
 
-   Solução, utilizar `data-testid` com um valor:
+   Solução:
    ```html
    <button class="p-button p-component" data-testid="save-button">Salvar</button>
    ```
@@ -58,7 +57,7 @@ O teste de UI verifica:
    <button class="p-button p-component">Novo</button>
    ```
 
-   Solução, utilizar `data-testid` com um valor:
+   Solução:
    ```html
    <button class="p-button p-component" data-testid="create-button">Criar</button>
    ```
@@ -71,32 +70,24 @@ use: {
 }
 ```
 Exemplo de uso:
-Sempre que usar o método `getByTestId("save-button")` o Playwright vai buscar o elemento que possui `data-testid="save-button"`.
 ```ts
+// Busca elemento pelo atributo data-testid
 await page.getByTestId('save-button').click();
 ```
 
-## Boas práticas para `data-testid`
-- Valor do atributo deve refletir a função do elemento.
-  Exemplos:
-  - Botão de salvar: `data-testid="save-button"`
-  - Input de email: `data-testid="email-input"`
-  - Modal de confirmação: `data-testid="confirm-modal"`
-
+## Exemplos Práticos de `data-testid`
 - **Elemento único na tela**:
 ```html
 <button data-testid="login-button">Entrar</button>
 ```
-
-- **Elemento repetido na tela** (colocar no pai e também nos filhos):
+- **Elemento repetido na tela (pai e filhos)**:
 ```html
 <div data-testid="user-card">
   <span data-testid="user-name">Pedro</span>
   <button data-testid="edit-button">Editar</button>
 </div>
 ```
-
-- **Registro de tabela** (usar ID único do registro):
+- **Registro de tabela (usar ID único do registro)**:
 ```html
 <tr data-testid="user-123">
   <td>Pedro</td>
@@ -105,9 +96,10 @@ await page.getByTestId('save-button').click();
 </tr>
 ```
 
-## Quando utilizar `data-testid`
-- Sempre que o elemento será usado em testes.
-- Nem todos os elementos precisam, mas o padrão de desenvolvimento deve incluir esse atributo.
+## Boas práticas para `data-testid`
+- Valor do atributo deve refletir a função do elemento.
+- Seguir nomes claros e consistentes.
+- Nem todos os elementos precisam, mas o padrão deve ser adotar `data-testid` sempre que o elemento for usado em testes.
 
 Benefícios:
 - Criação de testes mais rápida;
@@ -117,14 +109,20 @@ Benefícios:
 ## Proposta de melhoria na esteira (Jira)
 - Criar colunas **Ready for Test** e **Testing** (ou substituir as colunas de *Reviews*).
 - Fluxo proposto:
-  - Depois que o card está na arquitetura, o dev move para **Ready for Test**, indicando quem vai testar;
-  - Quando QA inicia o teste, move para **Testing**;
-  - Depois de testado, move para **Deploy**.
+  1. Depois que o card está na arquitetura, o dev move para **Ready for Test**, indicando quem vai testar;
+  2. Quando QA inicia o teste, move para **Testing**;
+  3. Depois de testado, move para **Deploy**.
+
+Representação visual (exemplo de fluxo):
+```
+Code Review -> Ready for Test -> Testing -> Deploy
+```
 
 Benefícios:
 - Nenhuma demanda passa sem QA olhar;
 - Evita que o QA fique “no escuro”;
 - Garante que todos os cards sejam testados corretamente;
+- Melhora organização e transparência da equipe.
 
 ## Conclusão
 - Adotar `data-testid` como padrão torna os testes mais confiáveis, rápidos e legíveis.
@@ -132,4 +130,4 @@ Benefícios:
 - Qualidade é responsabilidade de toda a equipe.
 
 ## Perguntas
-- Alguém tem alguma dúvida ou queira dar uma sugestão?
+-  Alguém tem alguma dúvida ou queira dar uma sugestão?obrigatoriamente?

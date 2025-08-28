@@ -130,4 +130,4 @@ Benefícios:
 - Qualidade é responsabilidade de toda a equipe.
 
 ## Perguntas
--  Alguém tem alguma dúvida ou queira dar uma sugestão?obrigatoriamente?
+-  Alguém tem alguma dúvida ou queira dar uma sugestão?
